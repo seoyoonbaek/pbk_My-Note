@@ -1,4 +1,5 @@
-package softeng;
+package TodoList;
+
 
 import java.io.*;
 import java.util.Calendar;
@@ -8,7 +9,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Scanner;
 
-import softeng.TodoList;
+import TodoList.TodoList;
 
 public class mainMenu {
 	
@@ -160,6 +161,4 @@ public class mainMenu {
    }
 
 }
-
-
 

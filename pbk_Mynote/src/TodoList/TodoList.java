@@ -1,4 +1,5 @@
-package softeng;
+package TodoList;
+
 import java.io.Serializable;
 
 public class TodoList implements Serializable {
@@ -8,19 +9,19 @@ public class TodoList implements Serializable {
       this.due = due; this.description = description; this.today=today;
    }
    public String getDue() {
-      return "제목 : "+due+" , ";
+      return "due : "+due+" , ";
    }
    public void setDue(String due) {
       this.due = due;
    }
    public String getDescription() {
-      return "감독 : "+description+" , ";
+      return "description : "+description+" , ";
    }
    public void setDescription(String description) {
       this.description = description;
    }
    public String getToday() {
-      return "장르 : "+today+" , ";
+      return "today : "+today+" , ";
    }
    public void setToday(String today) {
       this.today = today;
