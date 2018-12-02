@@ -15,8 +15,8 @@ import java.io.FileReader;
 import java.io.IOException;
 
 
-public class Contact_01 extends Contact {
-	public Contact_01(String Name, String PhoneNumber, String Email) {
+public class Main extends Contact {
+	public Main(String Name, String PhoneNumber, String Email) {
 		super(Name, PhoneNumber, Email);
 		// TODO Auto-generated constructor stub
 	}
@@ -34,8 +34,9 @@ public class Contact_01 extends Contact {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub 
 		Scanner scan = new Scanner(System.in);
-		HashMap<String,TodoList> TodoListMap = new HashMap<String,TodoList>();
-		HashMap<String,Appointment> AppointmentMap = new HashMap<String,Appointment>();
+		//Contact 해쉬맵 이름은 HashMap<String, Contact> ContactMap
+		//HashMap<String,TodoList> TodoListMap = new HashMap<String,TodoList>();
+		//HashMap<String,Appointment> AppointmentMap = new HashMap<String,Appointment>();
 		
 		while(true) {
 			System.out.println(mainMenu());
@@ -60,6 +61,7 @@ public class Contact_01 extends Contact {
 						System.out.println("========");
 						Contact.viewContact();
 						System.out.println("========");
+						
 						
 					}
 					if(SubMenu.equals("3")) {

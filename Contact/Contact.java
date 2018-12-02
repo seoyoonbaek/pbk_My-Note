@@ -42,6 +42,7 @@ public class Contact {
 	static void viewContact() {
 		if(ContactMap.isEmpty()) {
 			System.out.println("저장된 연락처가 없습니다.");
+			return ;
 		}
 		Set<String> keys = ContactMap.keySet();
 		Iterator<String> it = keys.iterator();
@@ -51,7 +52,17 @@ public class Contact {
 			System.out.println(details);
 		}
 	}
-	 
+	static void deleteContact(String key) {
+		if (ContactMap.containsKey(key)) {
+			System.out.println("저장된 항목이 없습니다.");
+			return;
+		}
+		
+	}
+	static void clearContactMap() {
+		ContactMap.clear();
+	}
+	
 	public Contact(String Name, String PhoneNumber, String Email) {
 		this.Name = Name; this.PhoneNumber = PhoneNumber;
 		this.Email = Email;
