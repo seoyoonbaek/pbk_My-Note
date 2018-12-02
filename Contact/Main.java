@@ -55,12 +55,34 @@ public class Main extends Contact {
 					String SubMenu;
 					SubMenu = scan.nextLine();
 					if(SubMenu.equals("1")) {
-						Contact.createContact();
+						System.out.print("이름: ");
+						String Name = scan.nextLine();
+						System.out.print("전화번호: ");
+						String PhoneNumber = scan.nextLine();
+						System.out.print("이메일: ");
+						String Email = scan.nextLine();
+						Contact.createContact(Name, PhoneNumber, Email);
+						System.out.println("저장되었습니다.\n");
+						continue;
 					}
 					if(SubMenu.equals("2")) {
 						System.out.println("========");
 						Contact.viewContact();
 						System.out.println("========");
+						
+						System.out.println(ViewSubMenu());
+						String ViewSubMenu;
+						ViewSubMenu = scan.nextLine();
+						if (ViewSubMenu.equals("1")) {
+							System.out.println("수정하실 이름을 작성해주세요.");
+							String key = scan.nextLine();
+							Contact.updateContact(key);
+						}
+						if (ViewSubMenu.equals("2")) {
+							String key = scan.nextLine();
+							Contact.deleteContact(key);
+							System.out.println("삭제되었습니다.");
+						}
 						
 						
 					}
@@ -89,9 +111,10 @@ public class Main extends Contact {
 			}
 			else	{
 				System.out.println("종료하시겠습니까?");
-				
+				break;
 			}
-		}
+		}scan.close();
+		
 		
 	}
 }
