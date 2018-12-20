@@ -5,11 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class Main extends Appointment {
-	public Main_A(int Date, String Persons, String Location) {
-		super(Date, Persons, Location);
-		// TODO Auto-generated constructor stub
-	}
+public class Main {		
 
 	public static String mainMenu() {
 		return "1. Contact 2. TodoList 3. Appointment 4. Quit ";
@@ -119,10 +115,10 @@ public class Main extends Appointment {
 					subMenuNum = scan.nextLine();
 		
 					if(subMenuNum.equals(CreateTab)) 
-						createAppointment();
+						Appointment.createAppointment();
 					
 					else if(subMenuNum.equals(ViewTab)) 
-						viewAppointment();
+						Appointment.viewAppointment();
 					
 					else if(subMenuNum.equals(SaveTab)) {
 						try {
