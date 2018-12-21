@@ -53,7 +53,7 @@ public class Main {
 
 				
 			
-			  try { Contact.openContactFile(); System.out.println("연락처를 불러왔습니다."); } catch
+			  try { Contact.OpenContactFile(); System.out.println("연락처를 불러왔습니다."); } catch
 			  (ClassNotFoundException e) { // TODO Auto-generated catch block
 			  e.printStackTrace(); } while(true) { System.out.println(subMenu()); String
 			  subMenuNum; subMenuNum = scan.nextLine();
@@ -62,20 +62,20 @@ public class Main {
 				  Contact.createContact(); 
 				  }
 			  
-			  if(subMenuNum.equals(ViewTab))) { 
-				  Contact.viewContact; 
+			  if(subMenuNum.equals(ViewTab)) { 
+				  Contact.viewContactList(); 
 				  
 			  }
 			  if(subMenuNum.equals(SaveTab)) { 
 				  try { 
-					  Contact.saveContact(); 
+					  Contact.SaveContactFile(); 
 					  } catch
 			  (FileNotFoundException e) { 
 						  // TODO Auto-generated catch block
 			  e.printStackTrace(); 
 			  } catch (IOException e) { 
 				  // TODO Auto-generated catch
-			  block e.printStackTrace(); 
+				  e.printStackTrace(); 
 			  }
 			  
 			  } 
@@ -109,14 +109,10 @@ public class Main {
 				}
 			}
 
-			else if (mainMenuNum.equals(AppointmentTab)) {
-				try {
-					Appointment.openAppointmentFile();
-					System.out.println("약속을 불러왔습니다.");
-				} catch (ClassNotFoundException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+else if (mainMenuNum.equals(AppointmentTab)) {
+				
+				Appointment.openAppointmentFile();
+				
 				while (true) {
 					System.out.println(subMenu());
 					String subMenuNum;
@@ -129,15 +125,8 @@ public class Main {
 						Appointment.viewAppointment();
 
 					else if (subMenuNum.equals(SaveTab)) {
-						try {
-							Appointment.saveAppointment();
-						} catch (FileNotFoundException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						} catch (IOException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
+						Appointment.saveAppointmentFile();
+						
 					} else
 						break;
 				}
