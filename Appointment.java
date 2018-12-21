@@ -3,11 +3,17 @@ import java.util.Scanner;
 import java.io.*;
 import java.util.ArrayList;
 
- public class Appointment {
+ public class Appointment implements Serializable {
 	static Scanner scan = new Scanner(System.in);
 	public int Date;
 	public String Persons, Location;
 	static ArrayList<Appointment> AppointmentMap = new ArrayList<Appointment>();
+	
+	public Appointment(int Date, String Persons, String Location) {
+		this.Date = Date; 
+		this.Persons = Persons; 
+		this.Location = Location;
+	}
 	
 	static void createAppointment() {
 		System.out.print("약속날짜(ex.20181201): ");
@@ -28,25 +34,36 @@ import java.util.ArrayList;
 		System.out.println("저장되었습니다.\n");
 	}
 	
-	static void saveAppointment() throws FileNotFoundException, IOException {
-		ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("Appointment.txt"));
-		oos.writeObject(AppointmentMap);
-		System.out.println("Appointment.txt 에 저장되었습니다.");
+	static void saveAppointmentFile() throws Exception {
+		FileOutputStream fos = new FileOutputStream("C:\\Users\\USER\\ssseoyoon\\pbk_My-Note\\Appointment.txt");
+		ObjectOutputStream oos = new ObjectOutputStream(new BufferedOutputStream(fos));
+		
+		try {
+			oos.writeObject(AppointmentMap);
+			oos.close();
+			System.out.println("Appointment.txt 에 저장되었습니다.");
+		}
+		catch(IOException e) {
+			e.printStackTrace();
+		}
 		oos.close();
 	}
 	
-	static void openAppointmentFile() throws ClassNotFoundException {
-		try {
-			ObjectInputStream ois = new ObjectInputStream(new FileInputStream("Appointment.txt"));
-			AppointmentMap = (ArrayList<Appointment>)ois.readObject();
-			ois.close();
+	static void openAppointmentFile() throws Exception {
+		
+		FileInputStream fis = new FileInputStream("C:\\Users\\USER\\ssseoyoon\\pbk_My-Note\\Appointment.txt");
+		ObjectInputStream ois = new ObjectInputStream(new BufferedInputStream(fis));
+			 		
+		try {	
+			ArrayList<Appointment> appointlist = (ArrayList<Appointment>) ois.readObject();
 		}
-		catch(FileNotFoundException fnf){
+		catch(FileNotFoundException e){
 			System.out.println("파일을 찾지 못하였습니다.");
 		}
 		catch(IOException e) {
-			System.out.println(e);
+			e.printStackTrace();
 		}
+		ois.close();
 	}
 	
 	static void viewAppointment() {
@@ -57,10 +74,11 @@ import java.util.ArrayList;
 		else {
 			System.out.println("=========================\n");
 			
-			for(int index = 0; index < AppointmentMap.size();index++) {
+			for(int index = 0; index < AppointmentMap.size(); index++) {
 				int number = index + 1;
 				System.out.println(number+". 약속날짜 : "+AppointmentMap.get(index).Date+"\n");
 			}	
+			
 			System.out.println("=========================\n");
 			viewAppointmentSubMenu();	
 		}
@@ -103,7 +121,6 @@ import java.util.ArrayList;
 	}
 	
 	static void updateAppointment(int index) {								
-		
 		if (index < AppointmentMap.size()) {									
 			int tempDate = AppointmentMap.get(index).Date;
 			String tempPersons = AppointmentMap.get(index).Persons;
@@ -119,7 +136,7 @@ import java.util.ArrayList;
 			String updateLocation = scan.nextLine();						
 			
 			Integer updatedate = updateDate;
-			if (!updatedate.equals("")) {tempDate = updateDate;}
+			if (updatedate != null) {tempDate = updateDate;}
 			if(!updatePersons.equals("")) {tempPersons = updatePersons;}
 			if(!updateLocation.equals("")) {tempLocation = updateLocation;}
 			
@@ -133,7 +150,6 @@ import java.util.ArrayList;
 	}
 	
 	static void deleteAppointment(int index) {
-		
 		if (index < AppointmentMap.size()) {
 			System.out.println("정말 삭제하시겠습니까?(y/n) : ");
 			String choice = scan.nextLine();
@@ -149,11 +165,5 @@ import java.util.ArrayList;
 			System.out.println("저장된 약속이 없습니다.\n");
 			return;
 		}
-	}
-	
-	public Appointment(int Date, String Persons, String Location) {
-		this.Date = Date; 
-		this.Persons = Persons; 
-		this.Location = Location;
 	}
  }
