@@ -51,23 +51,38 @@ public class Main {
 
 			if (mainMenuNum.equals(ContactTab)) {
 
-				System.out.println("blah");
-			}
-			/*
-			 * try { Contact.openContactFile(); System.out.println("연락처를 불러왔습니다."); } catch
-			 * (ClassNotFoundException e) { // TODO Auto-generated catch block
-			 * e.printStackTrace(); } while(true) { System.out.println(subMenu()); String
-			 * subMenuNum; subMenuNum = scan.nextLine();
-			 * 
-			 * if(subMenuNum.equals(CreateTab)) { Contact.createContact(); }
-			 * if(subMenuNum.equals(ViewTab))) { Contact.viewContact; }
-			 * if(subMenuNum.equals("3")) { try { Contact.saveContact(); } catch
-			 * (FileNotFoundException e) { // TODO Auto-generated catch block
-			 * e.printStackTrace(); } catch (IOException e) { // TODO Auto-generated catch
-			 * block e.printStackTrace(); }
-			 * 
-			 * } else break; } }
-			 */
+				
+			
+			  try { Contact.openContactFile(); System.out.println("연락처를 불러왔습니다."); } catch
+			  (ClassNotFoundException e) { // TODO Auto-generated catch block
+			  e.printStackTrace(); } while(true) { System.out.println(subMenu()); String
+			  subMenuNum; subMenuNum = scan.nextLine();
+			  
+			  if(subMenuNum.equals(CreateTab)) { 
+				  Contact.createContact(); 
+				  }
+			  
+			  if(subMenuNum.equals(ViewTab))) { 
+				  Contact.viewContact; 
+				  
+			  }
+			  if(subMenuNum.equals(SaveTab)) { 
+				  try { 
+					  Contact.saveContact(); 
+					  } catch
+			  (FileNotFoundException e) { 
+						  // TODO Auto-generated catch block
+			  e.printStackTrace(); 
+			  } catch (IOException e) { 
+				  // TODO Auto-generated catch
+			  block e.printStackTrace(); 
+			  }
+			  
+			  } 
+			  else break;
+			  } 
+			  }
+			
 
 			else if (mainMenuNum.equals(TodoListTab)) {
 
